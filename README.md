@@ -72,14 +72,15 @@ The code also exports a sampling Excel file (`<ClassID>.xlsx`) into the target d
 If you use this code in your research, please consider citing our published work (placeholder):
 
 ```bibtex
-@article{thyroid_scintigraphy_augmentation,
-  title={Thyroid Scintigraphy Data Augmentation using Fine-tuned Stable Diffusion},
-  author={[Your Name / Authors]},
-  journal={[Journal Name / Venue]},
-  year={[Year]},
-  publisher={[Publisher]}
+@article{sabouri2025aiaugmentedthyroidscintigraphyrobust,
+  title={AI-Augmented Thyroid Scintigraphy for Robust Classification}, 
+  author={Sabouri, Maziar and Hajianfar, Ghasem and Rafiei Sardouei, Alireza and Yazdani, Milad and Asadzadeh, Azin and Bagheri, Soroush and Arabi, Mohsen and Zakavi, Seyed Rasoul and Askari, Emran and Aghaee, Atena and Wiseman, Sam and Shahriari, Dena and Zaidi, Habib and Rahmim, Arman},
+  journal={arXiv preprint arXiv:2503.00366},
+  year={2025},
+  url={https://arxiv.org/abs/2503.00366},
+  note={Submitted to [Journal Name / Under Review]}
 }
 ```
 
 ## 📄 License
-This project is released under the [Apache License 2.0](LICENSE) / appropriate academic license.
+Creative Commons Attribution 4.0 International (CC BY 4.0)
