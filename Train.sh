@@ -1,5 +1,5 @@
 export MODEL_NAME="CompVis/stable-diffusion-v1-4"
-export TRAIN_DIR="/home/msabouri/Projects/01-Thyroid_Scintigraphy_Augmentation/Classification/DDPM/ThyroiDeep/data/Thyroid Dataset/Train_crop3"
+export TRAIN_DIR="../IMAGES"
 
 accelerate launch --mixed_precision="fp16" train_text_to_image.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
@@ -14,4 +14,4 @@ accelerate launch --mixed_precision="fp16" train_text_to_image.py \
   --learning_rate=1e-05 \
   --max_grad_norm=1 \
   --lr_scheduler="constant" --lr_warmup_steps=0 \
-  --output_dir="/home/msabouri/Projects/01-Thyroid_Scintigraphy_Augmentation/Scripts/Stable diffusion/Output"
+  --output_dir="../Stable diffusion/Output"
