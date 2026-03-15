@@ -45,35 +45,35 @@ def main():
     # Mode-specific Configurations
     if args.mode == "image2image":
         N_Sample_Per_Target = 1000
-        data_path = "/home/msabouri/Projects/01-Thyroid_Scintigraphy_Augmentation/Scripts/Stable diffusion/01-Image2Image"
-        base_img_dir = "/home/msabouri/Projects/01-Thyroid_Scintigraphy_Augmentation/Classification/DDPM/ThyroiDeep/data/Thyroid Dataset/Train_crop3"
+        data_path = "../01-Image2Image"
+        base_img_dir = "../IMAGES"
         pipeline_class = AutoPipelineForImage2Image
         use_prompt = False
         requires_init_image = True
     elif args.mode == "image_text2image":
         N_Sample_Per_Target = 1000
-        data_path = "/home/msabouri/Projects/01-Thyroid_Scintigraphy_Augmentation/Scripts/Stable diffusion/02-image_text2image"
-        base_img_dir = "/home/msabouri/Projects/01-Thyroid_Scintigraphy_Augmentation/Classification/DDPM/ThyroiDeep/data/Thyroid Dataset/Train_crop3"
+        data_path = "../02-image_text2image"
+        base_img_dir = "../IMAGES"
         pipeline_class = AutoPipelineForImage2Image
         use_prompt = True
         requires_init_image = True
     elif args.mode == "mask_text2image":
         N_Sample_Per_Target = 1000
-        data_path = "/home/msabouri/Projects/01-Thyroid_Scintigraphy_Augmentation/Scripts/Stable diffusion/03-mask_text2image"
-        base_img_dir = "/home/msabouri/Projects/01-Thyroid_Scintigraphy_Augmentation/Classification/DDPM/ThyroiDeep/data/Thyroid Dataset/Label-JPG"
+        data_path = "../03-mask_text2image"
+        base_img_dir = "../MASKS"
         pipeline_class = AutoPipelineForImage2Image
         use_prompt = True
         requires_init_image = True
     elif args.mode == "text2image":
         N_Sample_Per_Target = 1000
-        data_path = "/home/msabouri/Projects/01-Thyroid_Scintigraphy_Augmentation/Scripts/Stable diffusion/04-Text2Image"
-        base_img_dir = "/home/msabouri/Projects/01-Thyroid_Scintigraphy_Augmentation/Classification/DDPM/ThyroiDeep/data/Thyroid Dataset/Train_crop3"
+        data_path = "../04-Text2Image"
+        base_img_dir = "../IMAGES"
         pipeline_class = StableDiffusionPipeline
         use_prompt = True
         requires_init_image = False
 
     # Load model
-    model_path = "/home/msabouri/Projects/01-Thyroid_Scintigraphy_Augmentation/Stable Diffusion/Output/checkpoint-15000"
+    model_path = "../Stable Diffusion/Output/checkpoint-15000"
     unet = UNet2DConditionModel.from_pretrained(model_path + "/unet", torch_dtype=torch.float16)
 
     # Use GPU if available
@@ -88,7 +88,7 @@ def main():
 
     # Load dataset
     data_frame = pd.read_excel(
-        "/home/msabouri/Projects/01-Thyroid_Scintigraphy_Augmentation/Classification/DDPM/ThyroiDeep/data/Thyroid Dataset/Excel/Thyroid_V04.xlsx",
+        "../Data/Scintigraphy.xlsx",
         sheet_name="Train",
     )
     targets = np.unique(data_frame.Class3.values)
