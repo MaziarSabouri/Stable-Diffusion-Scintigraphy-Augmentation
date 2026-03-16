@@ -1,8 +1,23 @@
-# Stable Diffusion for Thyroid Scintigraphy Augmentation
+# Diffusion-Based-Scintigraphy-Augmentation
 
 This repository contains the training and inference scripts used to fine-tune Stable Diffusion and generate synthetic thyroid scintigraphy images. This code supports the data augmentation pipeline presented in our published paper.
 
-The repository includes a highly-optimized text-to-image finetuning pipeline and a unified, high-performance inference script (`Inference_combined.py`) that utilizes CUDA streams for parallel processing and includes automatic handling of generated black images (safety checker retries).
+## 🌊 Flow Matching vs. Stable Diffusion
+In our study, we explored two distinct generative pipelines for thyroid scintigraphy augmentation:
+1. **Stable Diffusion Pipeline**: Fully detailed, optimized, and provided in this repository. 
+2. **Masked Optimal Transport Flow Matching (MOTFM) Pipeline**: For details and code regarding the Flow Matching methodology, please refer to our related [Paper (Springer)](https://link.springer.com/chapter/10.1007/978-3-032-05325-1_21) and [GitHub Repository (milad1378yz/MOTFM)](https://github.com/milad1378yz/MOTFM).
+
+## 📊 Study Overview & Results
+
+![Flowchart](flowchart.jpg)
+*Overview of the study workflow illustrating the dataset, augmentation strategies, and model training. (DG: Diffuse Goiter, NG: Nodular Goiter, NL: Normal, TI: Thyroiditis, O: Original, CA: Conventional Augmentation, SD: Stable Diffusion, FM: Flow Matching)*
+
+![Sample](sample.jpg)
+*Examples of original and augmented images for each class using different methods. Grad-CAM visualizations from the O+FM model are also shown on external dataset samples, highlighting the model’s focus during prediction. (DG: Diffuse Goiter, NG: Nodular Goiter, NL: Normal, TI: Thyroiditis, O: Original, CA: Conventional Augmentation, SD: Stable Diffusion, FM: Flow Matching, EX: External)*
+
+---
+
+This repository includes a highly-optimized text-to-image finetuning pipeline and a unified, high-performance inference script (`Inference_combined.py`) that utilizes CUDA streams for parallel processing and includes automatic handling of generated black images (safety checker retries).
 
 ## 🚀 Features
 
@@ -117,13 +132,6 @@ Pure generative mode starting from standard latent noise, fully directed by the 
 Depending on the mode used, the output images are distributed into target-specific folders (e.g., `0/`, `1/`, etc.) located within their respective main directories (`../01-Image2Image/`, etc.). 
 
 The code also exports a sampling Excel file (`<ClassID>.xlsx`) into the target directory to record the exact metadata of the sampled instances.
-
-## 🌊 Flow Matching Pipeline
-
-Our study also successfully explores another generative pipeline based on Masked Optimal Transport Flow Matching (MOTFM) for thyroid scintigraphy augmentation. For details and code regarding the Flow Matching methodology, please refer to:
-- **Paper**: [Flow Matching for Medical Image Synthesis: Bridging the Gap Between Speed and Quality
-](https://link.springer.com/chapter/10.1007/978-3-032-05325-1_21)
-- **GitHub Repository**: [milad1378yz/MOTFM](https://github.com/milad1378yz/MOTFM)
 
 ## 📝 Citation
 
