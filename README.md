@@ -55,20 +55,6 @@ The `metadata.jsonl` file should look like this (one JSON object per line):
 {"file_name": "image_002.jpg", "text": "A scintigraphy image showing solitary toxic nodule..."}
 ```
 
-**Quick way to generate this from your existing Excel using Python:**
-```python
-import pandas as pd
-import json
-
-df = pd.read_excel('../Data/Scintigraphy.xlsx', sheet_name='Train')
-with open('../IMAGES/metadata.jsonl', 'w') as f:
-    for _, row in df.iterrows():
-        # Adjust extension if required
-        entry = {"file_name": f"{row['ID']}.jpg", "text": row['Prompt']}
-        f.write(json.dumps(entry) + '\n')
-```
----
-
 ## 🏋️‍♂️ Training (Fine-Tuning)
 
 To adapt the base Stable Diffusion model to the scintigraphy domain, we use the `train_text_to_image.py` script backed by `accelerate`.
