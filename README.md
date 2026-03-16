@@ -121,7 +121,8 @@ The code also exports a sampling Excel file (`<ClassID>.xlsx`) into the target d
 ## 🌊 Flow Matching Pipeline
 
 Our study also successfully explores another generative pipeline based on Masked Optimal Transport Flow Matching (MOTFM) for thyroid scintigraphy augmentation. For details and code regarding the Flow Matching methodology, please refer to:
-- **Paper**: [Masked Optimal Transport Flow Matching (Springer)](https://link.springer.com/chapter/10.1007/978-3-032-05325-1_21)
+- **Paper**: [Flow Matching for Medical Image Synthesis: Bridging the Gap Between Speed and Quality
+](https://link.springer.com/chapter/10.1007/978-3-032-05325-1_21)
 - **GitHub Repository**: [milad1378yz/MOTFM](https://github.com/milad1378yz/MOTFM)
 
 ## 📝 Citation
