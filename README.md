@@ -9,10 +9,10 @@ In our study, we explored two distinct generative pipelines for thyroid scintigr
 
 ## 📊 Study Overview & Results
 
-![Flowchart](flowchart.jpg)
+![Flowchart](Figures/flowchart.jpg)
 *Overview of the study workflow illustrating the dataset, augmentation strategies, and model training. (DG: Diffuse Goiter, NG: Nodular Goiter, NL: Normal, TI: Thyroiditis, O: Original, CA: Conventional Augmentation, SD: Stable Diffusion, FM: Flow Matching)*
 
-![Sample](sample.jpg)
+![Sample](Figures/sample.jpg)
 *Examples of original and augmented images for each class using different methods. Grad-CAM visualizations from the O+FM model are also shown on external dataset samples, highlighting the model’s focus during prediction. (DG: Diffuse Goiter, NG: Nodular Goiter, NL: Normal, TI: Thyroiditis, O: Original, CA: Conventional Augmentation, SD: Stable Diffusion, FM: Flow Matching, EX: External)*
 
 ---
