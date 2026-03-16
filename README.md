@@ -27,9 +27,25 @@ pip install -r requirements.txt
 Before running the training or inference scripts, ensure your directories and files are set up properly.
 Using the latest configurations, your workspace should look something like this:
 
-- **Metadata Excel File**: `../Data/Scintigraphy.xlsx` containing `Folder` (image ID), `Prompt` (text condition), and `Class` (target class).
-- **Image Directory**: `../IMAGES` containing your source images.
-- **Mask Directory**: `../MASKS` containing label maps used for spatial conditioning.
+- **Metadata Excel File**: `../Data/Scintigraphy.xlsx` containing `ID` (image ID), `Prompt` (text condition), and `Class` (target class).
+- **Image Directory**: `../IMAGES` containing your source `.jpg` images, named exactly as their `ID`.
+- **Mask Directory**: `../MASKS` containing label maps as `.jpg` images used for spatial conditioning, similarly named by `ID`.
+
+Your basic folder structure should look like this:
+```text
+├── Data/
+│   └── Scintigraphy.xlsx
+├── IMAGES/
+│   ├── image_001.jpg
+│   ├── image_002.jpg
+│   ├── ...
+│   └── metadata.jsonl      <-- Required for training
+└── MASKS/
+    ├── image_001.jpg
+    ├── image_002.jpg
+    └── ...
+```
+
 ### Creating the HuggingFace `metadata.jsonl` (for Training)
 The `train_text_to_image.py` script relies on HuggingFace `datasets`. For the script to pair your images with the correct training prompts, you must create a `metadata.jsonl` file and **place it directly inside your `../IMAGES/` directory**.
 
@@ -48,7 +64,7 @@ df = pd.read_excel('../Data/Scintigraphy.xlsx', sheet_name='Train')
 with open('../IMAGES/metadata.jsonl', 'w') as f:
     for _, row in df.iterrows():
         # Adjust extension if required
-        entry = {"file_name": f"{row['Folder']}.jpg", "text": row['Prompt']}
+        entry = {"file_name": f"{row['ID']}.jpg", "text": row['Prompt']}
         f.write(json.dumps(entry) + '\n')
 ```
 ---
@@ -115,6 +131,12 @@ Pure generative mode starting from standard latent noise, fully directed by the 
 Depending on the mode used, the output images are distributed into target-specific folders (e.g., `0/`, `1/`, etc.) located within their respective main directories (`../01-Image2Image/`, etc.). 
 
 The code also exports a sampling Excel file (`<ClassID>.xlsx`) into the target directory to record the exact metadata of the sampled instances.
+
+## 🌊 Flow Matching Pipeline
+
+Our study also successfully explores another generative pipeline based on Masked Optimal Transport Flow Matching (MOTFM) for thyroid scintigraphy augmentation. For details and code regarding the Flow Matching methodology, please refer to:
+- **Paper**: [Masked Optimal Transport Flow Matching (Springer)](https://link.springer.com/chapter/10.1007/978-3-032-05325-1_21)
+- **GitHub Repository**: [milad1378yz/MOTFM](https://github.com/milad1378yz/MOTFM)
 
 ## 📝 Citation
 
